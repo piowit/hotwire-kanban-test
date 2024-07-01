@@ -1,0 +1,17 @@
+%h1 Boards
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Actions
+  %tbody
+    - @boards.each do |board|
+      %tr
+        %td= board.name
+        %td
+          = link_to 'Show', board, class: 'btn btn-primary btn-sm rounded-0'
+          = link_to 'Edit', edit_board_path(board), class: 'btn btn-secondary btn-sm rounded-0'
+          = link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm rounded-0'
+
+= link_to 'New Board', new_board_path, class: 'btn btn-success rounded-0'
