@@ -1,9 +1,10 @@
-%p#notice= notice
-
-%p
-  %b Name:
+%h1
   = @board.name
+  = link_to 'New Column', new_board_board_column_path(@board), class: 'btn btn-primary float-end mt-2 rounded-0'
 
-= link_to 'Edit', edit_board_path(@board)
-\|
-= link_to 'Back', boards_path
+.row.mt-4
+  - @board.board_columns.each do |column|
+    .col
+      .card.rounded-0
+        .card-body
+          %h5.card-title= column.name

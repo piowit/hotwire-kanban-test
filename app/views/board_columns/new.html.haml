@@ -1,0 +1,16 @@
+%h1 New Board Column
+
+= form_with(model: [@board, @board.board_columns.build], local: true) do |form|
+  - if @board_column.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@board_column.errors.count, 'error')} prohibited this board column from being saved:"
+      %ul
+        - @board_column.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = form.label :name
+    = form.text_field :name, class: 'form-control rounded-0'
+
+  .actions.mt-2
+    = form.submit 'Create Column', class: 'btn btn-primary rounded-0'
