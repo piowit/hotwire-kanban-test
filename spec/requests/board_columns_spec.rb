@@ -40,4 +40,15 @@ RSpec.describe "/board_bolumns", type: :request do
       end
     end
   end
+
+  describe "DELETE /destroy" do
+    it "destroys the requested board" do
+      board_column = BoardColumn.create!(name: 'Col 1', board: board)
+      expect {
+        delete board_board_column_url(board, board_column)
+      }.to change(BoardColumn, :count).by(-1)
+
+      expect(response).to redirect_to(board_url(board))
+    end
+  end
 end

@@ -39,10 +39,11 @@ class BoardColumnsController < ApplicationController
 
   def destroy
     @board_column = BoardColumn.find params[:id]
+    board = @board_column.board
     @board_column.destroy!
 
     respond_to do |format|
-      format.html { redirect_to boards_url, notice: "BoardColumn was successfully destroyed." }
+      format.html { redirect_to board_url(board), notice: "BoardColumn was successfully destroyed." }
       format.json { head :no_content }
     end
   end
