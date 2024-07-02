@@ -41,6 +41,37 @@ RSpec.describe "/board_bolumns", type: :request do
     end
   end
 
+  describe "GET /edit" do
+    it "renders a successful response" do
+      board_column = BoardColumn.create!(name: 'Col 1', board: board)
+      get edit_board_board_column_url(board, board_column)
+      expect(response).to be_successful
+    end
+  end
+
+  describe "PATCH /update" do
+    context "with valid parameters" do
+      let(:new_attributes) {
+        { name: 'Col 2' }
+      }
+
+      it "updates the requested board and redirect to the board" do
+        board_column = BoardColumn.create!(name: 'Col 1', board: board)
+        patch board_board_column_url(board, board_column), params: { board_column: new_attributes }
+        expect(board_column.reload.name).to eq 'Col 2'
+        expect(response).to redirect_to(board_url(board))
+      end
+    end
+
+    context "with invalid parameters" do
+      it "renders a response with 422 status" do
+        board_column = BoardColumn.create!(name: 'Col 1', board: board)
+        patch board_url(board), params: { board: invalid_attributes }
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+  end
+
   describe "DELETE /destroy" do
     it "destroys the requested board" do
       board_column = BoardColumn.create!(name: 'Col 1', board: board)

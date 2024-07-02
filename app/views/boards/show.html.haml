@@ -9,5 +9,8 @@
         .card-body
           .d-flex.justify-content-between.align-items-center
             %h5.card-title.mb-0= column.name
-            = link_to board_board_column_path(@board, column), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-danger' do
-              %i.bi.bi-trash
+            .d-flex.gap-2
+              = link_to edit_board_board_column_path(@board, column), class: 'text-default' do
+                %i.bi.bi-pencil
+              = link_to board_board_column_path(@board, column), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-danger' do
+                %i.bi.bi-trash

@@ -5,6 +5,7 @@ class BoardColumnsController < ApplicationController
   end
 
   def edit
+    @board = Board.find(params[:board_id])
     @board_column = BoardColumn.find(params[:id])
   end
 
@@ -28,7 +29,7 @@ class BoardColumnsController < ApplicationController
 
     respond_to do |format|
       if @board_column.update(board_column_params)
-        format.html { redirect_to board_url(@board), notice: "BoardColumn was successfully updated." }
+        format.html { redirect_to board_url(@board_column.board), notice: "BoardColumn was successfully updated." }
         format.json { render :show, status: :ok, location: @board_column }
       else
         format.html { render :edit, status: :unprocessable_entity }
