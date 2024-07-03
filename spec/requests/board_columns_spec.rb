@@ -1,15 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "/board_bolumns", type: :request do
-  let(:board) { Board.create!(name: 'Board 1') }
+  let(:board) { create(:board, name: 'Board 1') }
 
-  let(:valid_attributes) {
-    { name: 'Column 1' }
-  }
-
-  let(:invalid_attributes) {
-    { name: nil }
-  }
+  let(:valid_attributes) { { name: 'Column 1' } }
+  let(:invalid_attributes) { { name: nil } }
 
   describe "GET /new" do
     it "renders a successful response" do
@@ -43,7 +38,7 @@ RSpec.describe "/board_bolumns", type: :request do
 
   describe "GET /edit" do
     it "renders a successful response" do
-      board_column = BoardColumn.create!(name: 'Col 1', board: board)
+      board_column = create(:board_column, name: 'Col 1', board: board)
       get edit_board_board_column_url(board, board_column)
       expect(response).to be_successful
     end
@@ -56,7 +51,7 @@ RSpec.describe "/board_bolumns", type: :request do
       }
 
       it "updates the requested board and redirect to the board" do
-        board_column = BoardColumn.create!(name: 'Col 1', board: board)
+      board_column = create(:board_column, name: 'Col 1', board: board)
         patch board_board_column_url(board, board_column), params: { board_column: new_attributes }
         expect(board_column.reload.name).to eq 'Col 2'
         expect(response).to redirect_to(board_url(board))
@@ -65,7 +60,7 @@ RSpec.describe "/board_bolumns", type: :request do
 
     context "with invalid parameters" do
       it "renders a response with 422 status" do
-        board_column = BoardColumn.create!(name: 'Col 1', board: board)
+        board_column = create(:board_column, name: 'Col 1', board: board)
         patch board_url(board), params: { board: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
@@ -74,7 +69,7 @@ RSpec.describe "/board_bolumns", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested board" do
-      board_column = BoardColumn.create!(name: 'Col 1', board: board)
+      board_column = create(:board_column, name: 'Col 1', board: board)
       expect {
         delete board_board_column_url(board, board_column)
       }.to change(BoardColumn, :count).by(-1)
