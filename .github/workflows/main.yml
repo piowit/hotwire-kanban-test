@@ -21,6 +21,9 @@ jobs:
       - name: Install Dependencies
         run: bundle install
 
+      - name: Precompile assets
+        run: rails assets:precompile
+
       - name: Run RuboCop
         run: bundle exec rubocop
 
