@@ -5,7 +5,6 @@ class BoardColumnsController < ApplicationController
   end
 
   def edit
-    @board = Board.find(params[:board_id])
     @board_column = BoardColumn.find(params[:id])
   end
 

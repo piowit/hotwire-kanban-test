@@ -39,7 +39,7 @@ RSpec.describe "/board_bolumns", type: :request do
   describe "GET /edit" do
     it "renders a successful response" do
       board_column = create(:board_column, name: 'Col 1', board: board)
-      get edit_board_board_column_url(board, board_column)
+      get edit_board_column_url(board_column)
       expect(response).to be_successful
     end
   end
@@ -52,7 +52,7 @@ RSpec.describe "/board_bolumns", type: :request do
 
       it "updates the requested board and redirect to the board" do
       board_column = create(:board_column, name: 'Col 1', board: board)
-        patch board_board_column_url(board, board_column), params: { board_column: new_attributes }
+        patch board_column_url(board_column), params: { board_column: new_attributes }
         expect(board_column.reload.name).to eq 'Col 2'
         expect(response).to redirect_to(board_url(board))
       end
@@ -71,7 +71,7 @@ RSpec.describe "/board_bolumns", type: :request do
     it "destroys the requested board" do
       board_column = create(:board_column, name: 'Col 1', board: board)
       expect {
-        delete board_board_column_url(board, board_column)
+        delete board_column_url(board_column)
       }.to change(BoardColumn, :count).by(-1)
 
       expect(response).to redirect_to(board_url(board))
