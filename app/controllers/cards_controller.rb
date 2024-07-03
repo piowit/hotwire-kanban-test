@@ -5,11 +5,12 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(card_params)
+    @board_column = BoardColumn.find(params[:board_column_id])
+    @card = @board_column.cards.new(card_params)
 
     respond_to do |format|
       if @card.save
-        format.html { redirect_to board_url(card.board), notice: "Card was successfully created." }
+        format.html { redirect_to board_url(@card.board), notice: "Card was successfully created." }
         format.json { render :show, status: :created, location: @card }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -20,6 +21,6 @@ class CardsController < ApplicationController
 
   private
     def card_params
-      params.require(:card).permit(:title, :description, :board_column_id)
+      params.require(:card).permit(:title, :description)
     end
 end
