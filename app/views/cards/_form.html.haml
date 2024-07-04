@@ -1,10 +1,14 @@
-= form_with(model: [@board_column, @card], local: true) do |form|
+= form_with(model: @card, local: true) do |form|
   - if @card.errors.any?
     #error_explanation
       %h2= "#{pluralize(@card.errors.count, 'error')} prohibited this board column from being saved:"
       %ul
         - @card.errors.full_messages.each do |message|
           %li= message
+
+  .form-group
+    = form.label :board_column
+    = form.collection_select :board_column_id, BoardColumn.all, :id, :name, {}, class: 'form-control rounded-0'
 
   .form-group
     = form.label :title

@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   resources :boards, shallow: true do
     resources :board_columns, except: [ :index, :show ] do
-      resources :cards,  only: [ :new, :create ]
     end
   end
 
+  resources :cards,  except: [ :index ]
 
   root "boards#index"
 end
