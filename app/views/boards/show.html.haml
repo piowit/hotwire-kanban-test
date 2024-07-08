@@ -2,18 +2,20 @@
   = @board.name
   = link_to 'New Column', new_board_board_column_path(@board), class: 'btn btn-primary float-end rounded-0'
 
-.row.mt-4
-  - @board.board_columns.each do |column|
-    .col-md-3.d-flex.flex-column.mb-4.border-end
-      .card.rounded-0.flex-fill
-        .card-header
-          .d-flex.justify-content-between.align-items-center
-            %h3.card-title.mb-0= column.name
-            .d-flex.gap-2
-              = link_to edit_board_column_path(column), class: 'text-default' do
-                %i.bi.bi-pencil
-              = link_to board_column_path(column), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-danger' do
-                %i.bi.bi-trash
+.board-container
+  .board-scroll
+    - @board.board_columns.each do |column|
+      .board-column
+        .d-flex.flex-row
+          .d-flex.flex-col
+            = column.name
+          .d-flex.flex-col.ms-auto
+            .p-1
+              = link_to edit_board_column_path(column) do
+                .bi.bi-pencil
+            .p-1
+              = link_to board_column_path(column), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do
+                .bi.bi-trash
         .card-body
           .my-2
             - column.cards.each do |card|
@@ -21,4 +23,4 @@
                 = render partial: 'cards/card', locals: { card: card }
           .text-center.mt-4
             = link_to new_card_url(board_column_id: column.id), class: 'text-success fs-1' do
-              %i.bi.bi-plus
+              .bi.bi-plus

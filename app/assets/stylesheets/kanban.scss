@@ -11,7 +11,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5vh;
+    padding: 5vh 5vw;
     box-sizing: border-box;
   }
   
@@ -19,8 +19,46 @@ body, html {
     background-color: #f0f0f0;
     border-radius: 15px;
     padding: 20px;
-    width: calc(100vw - 5vw);
-    height: calc(100vh - 13vh);
+    width: 90vw;
+    height: 90vh;
     overflow: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+  
+  .board-container {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 15px;
+  }
+  
+  .board-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .board-column {
+    flex: 0 0 auto;
+    width: 250px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .board-column h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  
+  .board-column .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
