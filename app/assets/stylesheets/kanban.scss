@@ -1,0 +1,26 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .gradient-background {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FFA500, #FFFFFF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5vh;
+    box-sizing: border-box;
+  }
+  
+  .content-container {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    padding: 20px;
+    width: calc(100vw - 5vw);
+    height: calc(100vh - 13vh);
+    overflow: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
