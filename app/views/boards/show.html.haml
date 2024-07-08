@@ -1,6 +1,9 @@
-%h1
-  = @board.name
-  = link_to 'New Column', new_board_board_column_path(@board), class: 'btn btn-primary float-end rounded-0'
+.board-heder
+  .d-flex.flex-row
+    .d-flex.flex-col
+      %h1= @board.name
+    .d-flex.flex-col.ms-auto
+      = link_to 'New Column', new_board_board_column_path(@board), class: 'btn btn-outline-primary float-end rounded-1'
 
 .board-container
   .board-scroll
