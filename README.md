@@ -22,3 +22,15 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+# sortable js
+1. yarn add @rails/request.js sortablejs
+2.
+```
+./bin/importmap pin @rails/request.js
+./bin/importmap pin sortablejs
+```
+
+3. add act_as_list gem https://github.com/brendon/acts_as_list
+

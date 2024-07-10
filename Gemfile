@@ -48,6 +48,10 @@ gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+# https://dev.to/vladyio/multi-column-drag-and-drop-with-sortablejs-and-stimulus-3h6a
+# https://dev.to/vladyio/multi-column-drag-and-drop-with-sortablejs-and-stimulus-3h6a
+
+gem "acts_as_list" # for drag and drop sortable js
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

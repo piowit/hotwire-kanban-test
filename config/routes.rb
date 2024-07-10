@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :boards, shallow: true do
     resources :board_columns, except: [ :index, :show ] do
+      member do
+        put :update_card_positions
+      end
     end
   end
 

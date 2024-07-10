@@ -1,4 +1,13 @@
 class BoardColumnsController < ApplicationController
+  def update_card_positions
+    puts params
+    column = BoardColumn.find(params[:column_id])
+    card = Card.find(params[:id])
+    card.update(board_column: column)
+    card.insert_at(params[:position].to_i + 1)
+    head :ok
+  end
+
   def new
     @board = Board.find(params[:board_id])
     @board_column = @board.board_columns.new
@@ -51,5 +60,5 @@ class BoardColumnsController < ApplicationController
   private
     def board_column_params
       params.require(:board_column).permit(:name)
-    end
+  end
 end
