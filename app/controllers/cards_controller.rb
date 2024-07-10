@@ -48,6 +48,6 @@ class CardsController < ApplicationController
 
   private
     def card_params
-      params.require(:card).permit(:title, :description, :board_column_id)
+      params.require(:card).permit(:title, :description, :board_column_id, :position)
     end
 end

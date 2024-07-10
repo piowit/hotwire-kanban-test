@@ -8,7 +8,11 @@
 
   .form-group
     = form.label :board_column
-    = form.collection_select :board_column_id, BoardColumn.all, :id, :name, {}, class: 'form-control rounded-0'
+    = form.collection_select :board_column_id, BoardColumn.all, :id, :name, {}, class: 'form-control rounded-0 form-select'
+
+  .form-group
+    = form.label :position
+    = form.number_field :position, class: 'form-control rounded-0'
 
   .form-group
     = form.label :title
@@ -17,6 +21,8 @@
   .form-group
     = form.label :description
     = form.text_field :description, class: 'form-control rounded-0'
+
+
 
   .actions.mt-2
     = form.submit 'Save', class: 'btn btn-primary rounded-0'
