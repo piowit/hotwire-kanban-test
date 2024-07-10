@@ -1,7 +1,7 @@
 .board-header.w-100
   .row
     .d-flex.justify-content-between
-      = link_to 'New Column', new_board_board_column_path(@board), class: 'btn btn-outline-primary invisible'
+      = link_to 'Back to boards list', boards_path, class: 'text-primary-grey-600 ms-2'
       %h1.text-primary-dark-500
         = @board.name
       %div
@@ -9,7 +9,7 @@
 
 .board-container 
   .board-scroll{data: {controller: "sortable", sortable_group_value: @board.id, sortable_url_value: update_card_positions_board_column_path(":id")}}
-    - @board.board_columns.each do |column|
+    - @board_columns.each do |column|
       .board-column.bg-primary-grey-100.border.border-primary-grey-200{data: {sortable_column_id_value: column.id}}
         .d-flex.flex-row
           .d-flex.flex-col.fw-bold

@@ -1,29 +1,28 @@
-%h1 Boards
+.w-100
+  .row
+    .d-flex.justify-content-between
+      = link_to 'New Board', new_board_path, class: 'btn btn-outline-primary invisible'
+      %h1.text-primary-dark-500
+        Boards
+      %div
+        = link_to 'New Board', new_board_path, class: 'btn btn-outline-primary'
 
-%table.table.table-striped
-  %thead
-    %tr
-      %th Name
-      %th Actions
-  %tbody
+  .row
     - @boards.each do |board|
-      %tr
-        %td= board.name
-        %td
-          = link_to 'Show', board, class: 'btn btn-primary btn-sm rounded-0'
-          = link_to 'Edit', edit_board_path(board), class: 'btn btn-secondary btn-sm rounded-0'
-          = link_to 'Destroy', board, data: {"turbo-method": :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm rounded-0'
-
-= link_to 'New Board', new_board_path, class: 'btn btn-success rounded-0 mt-2'
-= link_to 'New Board', new_board_path, class: 'btn btn-primary rounded-0 mt-2'
-= link_to 'New Board', new_board_path, class: 'btn btn-secondary rounded-0 mt-2'
-= link_to 'New Board', new_board_path, class: 'btn btn-info rounded-0 mt-2'
-= link_to 'New Board', new_board_path, class: 'btn btn-warning rounded-0 mt-2'
-
-
-= link_to 'New Board', new_board_path, class: 'btn btn-outline-success rounded-0 mt-2'
-= link_to 'New Board', new_board_path, class: 'btn btn-outline-primary rounded-0 mt-2'
-= link_to 'New Board', new_board_path, class: 'btn btn-outline-secondary rounded-0 mt-2'
-= link_to 'New Board', new_board_path, class: 'btn btn-outline-info rounded-0 mt-2'
-= link_to 'New Board', new_board_path, class: 'btn btn-outline-warning rounded-0 mt-2'
-
+      .col-3.my-3
+        .card.border.border-primary-grey-200
+          .card-header.bg-primary-grey-200
+            .d-flex.justify-content-between.align-items-center
+              %h5.card-title.mb-0
+                = link_to board.name, board, class: 'link-underline link-underline-opacity-0'
+              .d-flex.gap-2
+                = link_to edit_board_path(board), class: 'text-default' do
+                  %i.bi.bi-pencil.text-primary-dark-600
+                = link_to board, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-danger' do
+                  %i.bi.bi-trash.text-primary-dark-600
+          .card-body.bg-primary-grey-100
+            .card-text
+              %p
+                = "Columns: #{board.board_columns.size}"
+              %p
+                = "Cards: #{board.board_columns.joins(:cards).count}"
