@@ -7,7 +7,7 @@ body, html {
   
   .gradient-background {
     min-height: 100vh;
-    background: linear-gradient(135deg, #FFA500, #FFFFFF);
+    background: linear-gradient(135deg, #C0C3C8, #FF7223);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,8 +16,6 @@ body, html {
   }
   
   .content-container {
-    background-color: #f0f0f0;
-    border-radius: 15px;
     padding: 20px;
     width: 90vw;
     height: 90vh;
@@ -44,9 +42,6 @@ body, html {
   .board-column {
     flex: 0 0 auto;
     width: 250px;
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
