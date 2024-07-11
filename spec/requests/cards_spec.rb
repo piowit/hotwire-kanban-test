@@ -10,12 +10,15 @@ RSpec.describe "Cards", type: :request do
     }
   end
   let(:invalid_attributes) do
-    { title: nil, description: 'Hello World' }
+    { title: nil,
+      description: 'Hello World',
+      board_column_id: board_column.id
+    }
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_card_url
+      get new_card_url(board_column_id: create(:board_column).id)
       expect(response).to be_successful
     end
   end
