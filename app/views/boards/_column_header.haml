@@ -1,0 +1,10 @@
+.d-flex.flex-row
+  .d-flex.flex-col
+    = column.name
+  .d-flex.flex-col.ms-auto
+    .p-1
+      = link_to edit_board_column_path(column) do
+        .bi.bi-pencil.text-primary-dark-600
+    .p-1
+      = link_to board_column_path(column), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do
+        .bi.bi-trash.text-primary-dark-600

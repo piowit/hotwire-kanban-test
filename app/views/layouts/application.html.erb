@@ -16,5 +16,9 @@
         <%= yield %>
       </div>
     </div>
+
+    <div id="alert-container" class="position-fixed bottom-0 end-0 m-4 p-4">
+      <%= render 'alerts/alert', message: 'Hello, world!' %>
+    </div>
   </body>
 </html>

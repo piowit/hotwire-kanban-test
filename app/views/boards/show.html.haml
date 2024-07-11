@@ -7,25 +7,15 @@
       %div
         = link_to 'New Column', new_board_board_column_path(@board), class: 'btn btn-outline-primary'
 
-.board-container 
+.board-container
   .board-scroll{data: {controller: "sortable", sortable_group_value: @board.id, sortable_url_value: update_card_positions_board_column_path(":id")}}
     - @board_columns.each do |column|
       .board-column.bg-primary-grey-100.border.border-primary-grey-200{data: {sortable_column_id_value: column.id}}
-        .d-flex.flex-row
-          .d-flex.flex-col.fw-bold
-            = column.name
-          .d-flex.flex-col.ms-auto
-            .p-1
-              = link_to edit_board_column_path(column) do
-                .bi.bi-pencil.text-primary-dark-600
-            .p-1
-              = link_to board_column_path(column), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do
-                .bi.bi-trash.text-primary-dark-500
-        .board-column-body
-          .my-1.cards-container{data: {sortable_target: "cardsContainer"}}
-            - column.cards.order(:position).each do |card|
-              .my-1.draggable_card{data: {sortable_id: card.id}}
-                = render partial: 'cards/card', locals: { card: card }
-        .text-center.mt-4
+        = render partial: 'boards/column_header', locals: { column: column }
+        .board-column-body{data: {sortable_target: "cardsContainer"}}
+          - column.cards.order(:position).each do |card|
+            .my-1.draggable_card{data: {sortable_id: card.id}}
+              = render partial: 'cards/card', locals: { card: card }
+        .board-column-footer.text-center.mt-4
           = link_to new_card_url(board_column_id: column.id), class: 'text-success fs-1' do
             .bi.bi-plus
