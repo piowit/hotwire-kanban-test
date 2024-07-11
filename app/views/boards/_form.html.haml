@@ -1,10 +1,8 @@
 = form_for @board, class: 'col-12' do |form|
   - if @board.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@board.errors.count, "error")} prohibited this board from being saved:"
-      %ul
-        - @board.errors.full_messages.each do |message|
-          %li= message
+    - @board.errors.full_messages.each do |message|
+      %p.text-center.text-orange-600
+        = message
 
   .form-group.my-2
     = form.label :name

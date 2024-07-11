@@ -1,10 +1,8 @@
 = form_with(model: [@board, @board_column], local: true, class: 'col-12') do |form|
   - if @board_column.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@board_column.errors.count, 'error')} prohibited this board column from being saved:"
-      %ul
-        - @board_column.errors.full_messages.each do |message|
-          %li= message
+    - @board_column.errors.full_messages.each do |message|
+      %p.text-center.text-orange-600
+        = message
 
   .form-group
     = form.label :name
