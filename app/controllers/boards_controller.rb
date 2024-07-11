@@ -2,10 +2,11 @@ class BoardsController < ApplicationController
   before_action :set_board, only: %i[ show edit update destroy ]
 
   def index
-    @boards = Board.all
+    @boards = Board.all.includes(:board_columns)
   end
 
   def show
+    @board_columns = @board.board_columns.includes(:cards)
   end
 
   def new
