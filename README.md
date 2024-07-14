@@ -1,30 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple application to experiment with Turbo.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+This application uses:
+- ruby 3.3.0
+- sqlite 3
 
-* System dependencies
+Have them installed, clone repo and run:
 
-* Configuration
+```
+$ bundle
+$ rails db:setup
+$ bin/dev
+```
 
-* Database creation
+## Testing
 
-* Database initialization
+Run `$ rspec` for tests.
+Run `$ rubocop` for linter check.
 
-* How to run the test suite
+## Dependecies
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-# sortable js
+### sortable js
 1. yarn add @rails/request.js sortablejs
 2.
 ```
@@ -33,4 +32,3 @@ Things you may want to cover:
 ```
 
 3. add act_as_list gem https://github.com/brendon/acts_as_list
-
