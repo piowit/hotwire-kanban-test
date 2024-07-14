@@ -4,13 +4,7 @@
       %p.text-center.text-orange-600
         = message
 
-  .form-group.my-2
-    = form.label :board_column
-    = form.collection_select :board_column_id, BoardColumn.all, :id, :name, {}, class: 'form-control form-select'
-
-  .form-group.my-2
-    = form.label :position
-    = form.number_field :position, class: 'form-control'
+  = form.hidden_field :board_column_id
 
   .form-group.my-2
     = form.label :title
