@@ -1,0 +1,15 @@
+<div class="board-column bg-primary-grey-100 border border-primary-grey-200" data-sortable-column-id-value="<%= board_column.id %>">
+  <%= render partial: 'board_columns/column_header', locals: { column: board_column } %>
+  <div class="board-column-body" data-sortable-target="cardsContainer">
+    <% board_column.cards.order(:position).each do |card| %>
+      <div class="my-1 draggable_card" data-sortable-id="<%= card.id %>">
+        <%= render card %>
+      </div>
+    <% end %>
+  </div>
+  <div class="board-column-footer text-center mt-4">
+    <%= link_to new_card_url(board_column_id: board_column.id), class: 'text-success fs-1' do %>
+      <div class="bi bi-plus"></div>
+    <% end %>
+  </div>
+</div>
